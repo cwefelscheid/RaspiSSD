@@ -29,8 +29,10 @@ run the server.
 
 ```
 git clone https://github.com/cwefelscheid/RaspiSSD.git
-python3 raspissd/server_tf.py
+cd RaspiSSD
+python3 server_tf.py
 ```
+It can take up to 60 seconds for Tensorflow to initialize everything.
 
 Navigate to http://your.r.pi.ip:8000 and check out your webcam.
 
