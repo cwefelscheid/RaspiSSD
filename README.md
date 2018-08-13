@@ -3,8 +3,6 @@ RaspiSSD
 
 Object detection for your Pi
 
-![](img/example.png)
-
 What it does
 ============
 
