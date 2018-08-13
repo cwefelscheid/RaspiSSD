@@ -82,28 +82,23 @@ class WebSocket(tornado.websocket.WebSocketHandler):
 
     def loop(self):
         """Sends camera images in an infinite loop."""
-        if not args.detection:
-            sio = io.BytesIO()
-
-            lock.acquire()
-            camera.capture(sio, "jpeg", use_video_port=True)
-            lock.release()
-
+        lock.acquire()
         try:
-            if args.detection:
-                lock.acquire()
+            if args.detection == 'Yes':
                 if frame_jpeg is not None:
                     self.write_message(base64.b64encode(frame_jpeg))
 
             else:
-                self.write_message(base64.b64encode(sio.getvalue()))
+               sio = io.BytesIO()
+               camera.capture(sio, "jpeg", use_video_port=True)
+               self.write_message(base64.b64encode(sio.getvalue()))
         except tornado.websocket.WebSocketClosedError:
             self.camera_loop.stop()
         lock.release()
 
 def recordThread(camera):
 
-    if args.record:
+    if args.record == 'Yes':
         while True:
             for filename in camera.record_sequence(
                     'clip%02d.h264' % i for i in range(10)):
@@ -218,11 +213,15 @@ def detectSSDThread(camera,lock):
 parser = argparse.ArgumentParser(description="Starts a webserver that "
                                  "connects to a webcam.")
 parser.add_argument("--port", type=int, default=8000, help="The port on which to serve the website.")
-parser.add_argument("--record", type=bool, default=True, help="Record video to sdcard")
-parser.add_argument("--detection", type=bool, default=True, help="Send detection or original image")
+parser.add_argument("--record", type=str, default="Yes", help="Record video to sdcard")
+parser.add_argument("--detection", type=str, default="Yes", help="Send detection or original image")
 parser.add_argument("--resolution", type=str, default="low", help="The video resolution. Can be high, medium, or low.")
 parser.add_argument("--require-login", action="store_true", help="Require a password to log into webserver.")
 args = parser.parse_args()
+
+print("detection:",args.detection)
+print("port:",args.port)
+print(args.resolution)
 
 import picamera
 camera = picamera.PiCamera()
