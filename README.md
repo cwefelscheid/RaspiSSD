@@ -20,7 +20,7 @@ module. The
 command below installs both sets of dependencies.
 
 ```
-sudo apt-get install python3-pip libatlas-base-dev libjpeg-dev libopenjp2-7-dev libtiff5-dev fonts-freefont-ttf
+sudo apt-get install python3-pip libatlas-base-dev libjpeg-dev libopenjp2-7-dev libtiff5-dev fonts-freefont-ttf git
 sudo pip3 install tensorflow tornado picamera pillow
 ```
 
