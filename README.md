@@ -6,7 +6,7 @@ Object detection for your Pi
 What it does
 ============
 
-Hosts a website and applies a SSD MobileNet to the pi camera images in real time with approximately 1 FPS on a raspberry pi 3.
+Hosts a website and applies a SSD MobileNet to the pi camera images in real time with approximately 1-2 FPS on a Raspberry Pi 3.
 
 
 Installation
