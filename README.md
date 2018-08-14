@@ -12,7 +12,7 @@ Hosts a website and applies a SSD MobileNet to the pi camera images in real time
 Installation
 ============
 
-The project is a forke from Camp by Patrick Fuller.
+The project is a forke from [Camp](https://github.com/patrickfuller/camp/) by Patrick Fuller.
 Camp uses [tornado](http://www.tornadoweb.org/en/stable/) to create a
 web server. It can interact with the [Pi camera](http://www.adafruit.com/products/1367)
 with the aptly named [picamera](http://picamera.readthedocs.org/en/release-1.7/)
